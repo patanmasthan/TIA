@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Us | Tech Innovation Academy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* ===== BACKGROUND VIDEO ===== */
+.video-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-3;
+}
+
+/* Light overlay */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.75);
+    z-index:-2;
+}
+
+/* ===== AUDIO BUTTON ===== */
+#audioBtn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    padding:10px 16px;
+    background:#222;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+    z-index:10;
+}
+
+/* ===== BUBBLES ===== */
+#bubble-container{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.bubble{
+    position:absolute;
+    bottom:-50px;
+    border-radius:50%;
+    opacity:0.6;
+    animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+    to{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+}
+
+/* ===== HERO ===== */
+.about-hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.about-hero h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.about-hero p{
+    font-size:1.2rem;
+    color:#444;
+}
+
+/* ===== CONTENT ===== */
+.about-story{
+    max-width:1000px;
+    margin:auto;
+    padding:40px 25px 80px;
+    background:rgba(255,255,255,0.9);
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.about-story h2{
+    text-align:center;
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.about-story p{
+    margin-bottom:16px;
+    line-height:1.7;
+    font-size:1.05rem;
+}
+
+@media(max-width:768px){
+    .about-hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎥 BACKGROUND VIDEO (AUTOPLAY SILENT) -->
+<video class="video-bg" autoplay muted loop playsinline id="bgVideo">
+    <source src="images/Tech Innovation Academy - Welcome Message.mp4" type="video/mp4">
+    Your browser does not support video.
+</video>
+
+<div class="overlay"></div>
+
+<!-- 🔊 AUDIO ENABLE BUTTON -->
+<button id="audioBtn">🔊 Enable Sound</button>
+
+<!-- 🫧 BUBBLES -->
+<div id="bubble-container"></div>
+
+<!-- HERO -->
+<section class="about-hero">
+    <h1>About Tech Innovation Academy</h1>
+    <p>Learn • Practice • Build Skills • Grow with Confidence</p>
+</section>
+
+<!-- CONTENT -->
+<section class="about-story">
+<h2>Our Vision & Learning Approach</h2>
+
+<p>
+Tech Innovation Academy was started on <strong>December 15th 2025</strong>
+with eagerness, confidence, and a clear purpose — to help learners grow
+through practical learning and real skill development.
+</p>
+
+<p>
+Learning follows a structured yet flexible approach. Concepts are taught
+progressively so learners understand not just what to do, but why it works.
+</p>
+
+<p>
+We believe true growth comes from consistent practice and deep understanding.
+Mistakes are encouraged, debugging is taught, and confidence is built naturally.
+</p>
+
+<p>
+<strong>Admissions are open twice a year</strong>, allowing learners to join
+at the right time and progress steadily.
+</p>
+
+<p>
+We provide <strong>certifications</strong> for resumes and LinkedIn, but skills
+matter more than certificates.
+</p>
+
+<p>
+Skills create confidence, confidence builds growth, and growth leads to
+recognition. Our mission is to help you become excellent through knowledge,
+practice, and mindset.
+</p>
+</section>
+
+<!-- 🫧 BUBBLE SCRIPT -->
+<script>
+const container = document.getElementById("bubble-container");
+const colors = [
+'#f94144','#f3722c','#f9c74f','#90be6d',
+'#43aa8b','#577590','#9d4edd','#ff6f91'
+];
+
+function createBubble(){
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+
+    const size = Math.random()*20+10;
+    bubble.style.width = size+"px";
+    bubble.style.height = size+"px";
+    bubble.style.left = Math.random()*window.innerWidth+"px";
+    bubble.style.backgroundColor =
+        colors[Math.floor(Math.random()*colors.length)];
+    bubble.style.animationDuration =
+        (Math.random()*5+5)+"s";
+
+    container.appendChild(bubble);
+    setTimeout(()=>bubble.remove(),10000);
+}
+setInterval(createBubble,500);
+</script>
+
+<!-- 🔊 AUDIO ENABLE SCRIPT -->
+<script>
+const video = document.getElementById("bgVideo");
+const audioBtn = document.getElementById("audioBtn");
+
+audioBtn.addEventListener("click", () => {
+    video.muted = false;
+    video.volume = 0.5;
+    video.play();
+    audioBtn.style.display = "none";
+});
+</script>
+
+</body>
+</html>

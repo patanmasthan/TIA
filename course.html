@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses | Tech Innovation Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  color:white;
+}
+
+/* COURSES SECTION */
+.courses {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  opacity: 0.8;
+  margin-bottom: 50px;
+  font-size: 18px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.course-card {
+  background: #020617;
+  padding: 30px;
+  border-radius: 15px;
+  transition: 0.4s;
+  border: 1px solid #1e293b;
+}
+
+.course-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 12px 45px rgba(56,189,248,0.35);
+}
+
+.course-card h3 {
+  color: #38bdf8;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.course-card p {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.btn {
+  background: #38bdf8;
+  color: black;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+@media(max-width:500px){
+  .title{
+    font-size:28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="courses">
+  <h1 class="title">Our Popular Courses 🚀</h1>
+  <p class="subtitle">Choose a course and start building your future today</p>
+
+  <div class="course-grid">
+
+    <div class="course-card">
+      <h3>Full Stack Web Development</h3>
+      <p>
+        Learn HTML, CSS, JavaScript, React, NodeJS and Database.
+        Build real-time projects and become job-ready developer.
+      </p>
+      <button class="btn">Start Learning</button>
+    </div>
+
+    <div class="course-card">
+      <h3>Python Programming</h3>
+      <p>
+        Master Python with automation, data handling,
+        AI basics and real-world applications.
+      </p>
+      <a href="python.html" class="btn">Start Learning</a>
+    </div>
+
+    <div class="course-card">
+      <h3>Java Full Stack</h3>
+      <p>
+        Core Java, Spring Boot, REST APIs and
+        complete frontend-backend integration training.
+      </p>
+      <button class="btn">Start Learning</button>
+    </div>
+
+    <div class="course-card">
+      <h3>Cyber Security</h3>
+      <p>
+        Ethical hacking, network security,
+        vulnerability testing and system protection skills.
+      </p>
+      <button class="btn">Start Learning</button>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

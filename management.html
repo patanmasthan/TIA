@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Management | Tech Innovation Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Bubble Background */
+        #bubble-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-120vh);
+            }
+        }
+
+        /* Hero */
+        .management-hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .management-hero h1 {
+            font-size: 2.8rem;
+            color: #222;
+        }
+
+        .management-hero p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Intro */
+        .management-intro {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Team Section */
+        .management-team {
+            padding: 60px 20px;
+        }
+
+        .team-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .team-card img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 4px solid #f1f1f1;
+        }
+
+        .team-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .team-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Bottom Message */
+        .management-message {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px 80px;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .management-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bubble Background -->
+<div id="bubble-container"></div>
+
+<!-- HERO -->
+<section class="management-hero">
+    <h1>Our Team</h1>
+    <p>Experienced Domain Experts Shaping Student Careers</p>
+</section>
+
+<!-- INTRO -->
+<section class="management-intro">
+    <p>
+        Tech Innovation Academy is guided by a management team of <strong> 2+  experienced professionals</strong>
+        from different technical and career-focused domains. Each expert brings strong industry exposure,
+        practical knowledge, and a deep commitment to student growth and career success.
+    </p>
+</section>
+
+<!-- TEAM -->
+<section class="management-team">
+    <div class="team-grid">
+
+        <!-- Repeat & change domain + image -->
+        <div class="team-card">
+            <img src="images/vasuda.jpeg" alt="Management Member">
+            <h3>Gurram vasudha
+                <br><b>Java Developer </b></h3>
+            
+            <p>
+As part of the management team, she actively supports student career development by guiding learners in skill improvement, project-based learning, and industry-oriented practices. His experience and mentoring help students build strong technical foundations that prepare them for real-world challenges and long-term growth.
+                
+            </p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/muss.jpeg" alt="Management Member">
+            <h3>Shaik Muskina
+            <br><b>Python Developer </b></h3>
+            <p>
+                Python Developer with a strong focus on practical programming, logic building,
+    and real-world problem solving. Actively supports students in improving their
+    technical skills, confidence, and overall career readiness.
+            </p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/sravaani.png" alt="Management Member">
+            <h3>Nagamalli Sravani
+            <br><b>AI/ML Engineer </b></h3>
+            <p>
+                    AI/ML Engineer with a strong academic background in Computer Science Engineering.
+    Focuses on building a clear understanding of artificial intelligence and machine
+    learning concepts through practical examples, real-time applications, and
+    continuous guidance to support student learning and career development.
+            </p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/saba.jpeg" alt="Management Member">
+            <h3>Shaik Saba Naziya
+            <br><b>UI/UX developer</b></h3>
+            <p>
+                Passionate UI/UX Developer with a strong eye for design and user experience. Skilled in creating clean, user-friendly interfaces and interactive designs that improve usability and engagement.
+            </p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/kapu.jpeg" alt="Management Member">
+            <h3>Kapu Ashok
+            <br><b>Front-End Developer</b></h3>
+            <p>
+                Front-End Developer with a strong understanding of HTML, CSS, and JavaScript, focused on building responsive, user-friendly, and visually engaging web interfaces that enhance user experience and accessibility.
+            </p>
+        </div>
+
+      
+
+        <div class="team-card">
+            <img src="images/aliyaa.jpeg" alt="Management Member">
+            <h3>Shaik Aliya Firdous
+            <br><b>Java Developer</b></h3>
+            <p>
+              Java Developer with a solid foundation in object-oriented programming and backend development. Skilled in designing reliable, efficient applications and continuously learning new technologies to improve software quality.
+            </p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/vishu.jpeg" alt="Management Member">
+            <h3>Pagidirayi Vyshnavi
+            <br><b>Data Analyst </b></h3>
+            <p>
+               Detail-oriented Data Analyst with skills in collecting, analyzing, and interpreting data to support decision-making. Passionate about turning raw data into meaningful insights.
+            </p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/fayaz.png" alt="Management Member">
+            <h3>Sayyad Fayaz
+            <br><b>Web Developer</b></h3>
+            <p>
+              Web Developer with advanced knowledge of modern web technologies, experienced in building dynamic, responsive, and scalable web applications. Strong focus on performance, usability, and clean code practices.
+            </p>
+        </div>
+
+         <div class="team-card">
+            <img src="images/naresh.png" alt="Management Member">
+            <h3>Surva Naresh Babu
+            <br><b>Java FullStack Developer</b></h3>
+            <p>
+             Java Full Stack Developer with strong expertise in backend and frontend technologies, experienced in building secure, scalable, and efficient web applications. Passionate about solving real-world problems through clean and well-structured code.
+            </p>
+        </div>
+        <div class="team-card">
+            <img src="images/varun.png" alt="Management Member">
+            <h3>Varun girraju
+            <br><b>Cyber Security & Ethical Hacking</b></h3>
+            <p>
+                Cyber Security & Ethical Hacking professional with 3+ years of experience in securing systems and identifying vulnerabilities.
+            </p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/lik.jpeg" alt="Management Member">
+            <h3>Chowla Likhitha
+            <br><b>QA Tester</b></h3>
+            <p>
+                QA Tester with a B.Tech in Computer Science and Engineering. She focuses on identifying bugs, ensuring software quality, and improving application reliability through effective testing.
+            </p>
+        </div>
+        <div class="team-card">
+            <img src="images/Niveditha Photo.png" alt="Management Member">
+            <h3>Yellanuru Niveditha
+            <br><b>Data Analyst </b></h3>
+            <p>
+               Data Analyst with a Bachelor’s degree in Computer Science and Engineering. She is part of Advanced Tech Learn and has strong knowledge of modern data analysis tools and techniques. With a deep understanding of data interpretation and analytical methods, she transforms complex data into meaningful insights to support smart decision-making.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- MESSAGE -->
+<section class="management-message">
+    <p>
+        With strong domain expertise and a student-first approach, our management team
+        is committed to building skilled, confident, and career-ready professionals.
+    </p>
+</section>
+
+<!-- Bubble Script -->
+<script>
+const container = document.getElementById('bubble-container');
+const colors = ['#f94144','#f3722c','#f9c74f','#90be6d','#43aa8b','#577590','#9d4edd'];
+
+function createBubble() {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+
+    const size = Math.random() * 25 + 10;
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+    bubble.style.left = Math.random() * window.innerWidth + 'px';
+    bubble.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    bubble.style.animationDuration = (Math.random() * 6 + 6) + 's';
+
+    container.appendChild(bubble);
+
+    setTimeout(() => bubble.remove(), 12000);
+}
+
+setInterval(createBubble, 500);
+</script>
+
+</body>
+</html>

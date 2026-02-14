@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <title>Tech Innovation Academy</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- HEADER -->
+<header class="header">
+    <!-- Main Logo + MSME -->
+    <div class="logo-container">
+        <!-- Company Logo -->
+        <img src="images/logo.png" alt="Company Logo" class="header-logo">
+
+        <!-- Academy Name -->
+        <h1 class="logo">Tech Innovation Academy</h1>
+
+        <!-- MSME Badge -->
+        <div class="msme-badge">
+            <img src="images/msme.png" alt="MSME Approval Logo" class="msme-logo">
+            <span>MSME Approval</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="management.html">Management</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Student Corner</a>
+    </nav>
+</header>
+
+
+
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h2>Learn Skills for Your Future</h2>
+        <p>Best Training Academy for Students & Professionals</p>
+
+        <button class="primary-btn"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSecO74eLMGt5EgMTkVoeynET0KBQZKi0X_L7fUYw3hR8wAGbA/viewform?usp=dialog','_blank')">
+            Fill OUT
+        </button>
+    </div>
+</section>
+<div id="bubble-container"></div>
+<nav class="Masthan">
+    <marquee class="welcome-marquee"><h1>Welcome TO TECH INNOVATION ACEDEMY</h1></marquee>
+    <a href="http://127.0.0.1:5000/">UPDATES 🗣📢</a>
+
+</nav>
+
+
+<!-- FOUNDER -->
+<section class="leadership" id="leadership">
+    <h2 class="section-title"></h2>
+
+    <div class="leader-card-modern">
+        <div class="avatar-modern">
+            <img src="./images/mas.png" alt="Mr. Patan Masthan"> <!-- Replace with your uploaded image name -->
+        </div>
+        <h3>Mr. Patan Masthan</h3>
+        <span class="founder-role">Founder | Full Stack Web Developer</span>
+
+        <p>
+            I am <strong>Patan Masthan</strong>, the <strong>Founder of Tech Innovation Academy</strong>, dedicated to transforming education through innovative, technology-driven learning experiences. 
+            As an entrepreneur, I successfully launched and managed <strong>AMeena Clothing Store</strong>, overseeing online sales on <strong>Meesho, Flipkart, and Amazon</strong>, inventory management, and digital marketing campaigns.
+        </p>
+
+        <p>
+            With expertise in <strong>Full Stack Web Development</strong>, I have completed professional projects and internships at <strong>Rooman Technology (JNTUA)</strong>, <strong>Slash Mark IT Solutions</strong>, <strong>Pantech E-Learning</strong>, and <strong>SkillDzire Technologies</strong>, building responsive and dynamic web applications. 
+            I also contribute as a <strong>Freelance Front-End Developer</strong>, designing portfolios, UI-based projects, and reusable web components with a focus on clean UI/UX.
+        </p>
+
+        <p>
+            Through <strong>Tech Innovation Academy</strong>, my mission is to provide industry-ready training in <strong>Web Development, Python, Java, AI, and Cyber Security</strong>, empowering professionals to achieve real-world success.
+        </p>
+
+        <p class="founder-portfolio">
+            Explore my portfolio: 
+            <a href="https://my-portfolio-b28q.vercel.app/" target="_blank">www.my-portfolio-b28q.vercel.app</a>
+        </p>
+
+        <blockquote>
+            "Turning vision into reality requires passion, persistence, and purpose."
+        </blockquote>
+    </div>
+</section>
+
+
+<!-- COURSES -->
+<section class="courses" id="courses">
+    <h2 class="section-title">Our Popular Courses</h2>
+
+    <div class="course-grid">
+        <div class="course-card">
+            <h3>Full Stack Web Development</h3>
+            <p>HTML, CSS, JavaScript & Backend Technologies</p>
+           
+        </div>
+
+        <div class="course-card">
+            <h3>Python Programming</h3>
+            <p>Automation, projects & real-world applications</p>
+            
+        </div>
+
+        <div class="course-card">
+            <h3>Java Full Stack</h3>
+            <p>Java, Spring Boot & frontend integration</p>
+            
+        </div>
+
+        <div class="course-card">
+            <h3>Cyber Security</h3>
+            <p>Ethical hacking & system protection</p>
+            
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why">
+    <h2 class="section-title light">Why Choose Us?</h2>
+
+    <ul class="why-list">
+        <li>✔ Industry-ready skills</li>
+        <li>✔ Practical & project-based learning</li>
+        <li>✔ Affordable fee structure</li>
+        <li>✔ Experienced mentors</li>
+        <li>✔ Career guidance</li>
+    </ul>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+    <p>© 2026 Tech Innovation Academy. All Rights Reserved.</p>
+</footer>
+<script>
+const container = document.getElementById('bubble-container');
+
+// Bubble colors
+const colors = ['#f94144','#f3722c','#f9c74f','#90be6d','#43aa8b','#577590','#9d4edd','#ff6f91','#ff9671','#ffc75f'];
+
+// Create random bubbles
+function createBubble() {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+
+    // Random size
+    const size = Math.random() * 20 + 10; // 10px - 30px
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+
+    // Random horizontal position
+    bubble.style.left = Math.random() * window.innerWidth + 'px';
+
+    // Random color
+    bubble.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+    // Random animation duration
+    bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
+
+    container.appendChild(bubble);
+
+    // Remove after animation
+    setTimeout(() => {
+        bubble.remove();
+    }, 10000); // max duration
+}
+
+// Continuously create bubbles
+setInterval(createBubble, 500); // every 0.5s
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

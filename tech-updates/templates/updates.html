@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Updates</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>Tech Innovation Academy Updates</header>
+
+<div class="container">
+
+<!-- LOGIN -->
+{% if not role %}
+<form action="/login" method="POST">
+<select name="role">
+<option value="employee">Employee</option>
+<option value="admin">Admin</option>
+</select>
+<input type="password" name="password" placeholder="Password">
+<button>Login</button>
+</form>
+{% else %}
+<p>Logged in as {{role}}</p>
+<a href="/logout">Logout</a>
+{% endif %}
+
+<!-- POST FORM -->
+{% if role == "admin" or role == "employee" %}
+<form action="/add" method="POST" class="form">
+<input type="text" name="name" placeholder="Name" required>
+<textarea name="message" placeholder="Write update" required></textarea>
+<button>Post Update</button>
+</form>
+{% endif %}
+
+<!-- POSTS -->
+{% for p in posts %}
+<div class="post">
+<h3>{{p[1]}}</h3>
+<p>{{p[2]}}</p>
+<span>{{p[3]}}</span>
+
+{% if role == "admin" %}
+<a href="/delete/{{p[0]}}">Delete</a>
+{% endif %}
+</div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>

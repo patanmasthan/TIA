@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.profile-form {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 30px;
+}
+
+.profile-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.profile-form button {
+  width: 100%;
+  padding: 12px;
+  background: #6c63ff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* ID Card */
+.id-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.id-card {
+  background: white;
+  width: 360px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  padding: 20px;
+  display: none;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.id-card .header {
+  background: linear-gradient(135deg,#6c63ff,#4a47d1);
+  color: white;
+  padding: 15px;
+  border-radius: 15px 15px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.id-card .header img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.id-card .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #eee;
+  object-fit: cover;
+  margin: -50px auto 10px auto;
+  border: 3px solid white;
+}
+
+.id-card .student-info h2 { margin:5px 0; color:#333; }
+.id-card .student-info p { margin:3px 0; color:#555; }
+.id-card .details { margin-top:15px; text-align:left; padding:0 15px; }
+.id-card .details p { margin:8px 0; color:#333; }
+
+.signature { margin-top:20px; text-align:center; }
+.signature img { width:120px; display:block; margin:0 auto; }
+.signature p { font-size:12px; color:#555; margin-top:3px; }
+
+#downloadBtn, #editBtn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#downloadBtn { background: #4caf50; }
+#editBtn { background: #ff9800; }
+
+.terms {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+  line-height: 1.3;
+}
+</style>
+</head>
+<body>
+
+<div class="profile-form" id="profileForm">
+  <h2>Student Profile</h2>
+  <input type="file" id="profilePic" accept="image/*">
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="text" id="college" placeholder="College Name" required>
+  <input type="text" id="semester" placeholder="Semester" required>
+  <input type="text" id="hallTicket" placeholder="Hall Ticket Number" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <button onclick="submitProfile()">Submit & Generate ID</button>
+</div>
+
+<div class="id-card-container">
+  <div class="id-card" id="idCard">
+    <div class="header">
+      <img src="images/logo.png" alt="Logo" id="cardLogo">
+      Tech Innovation Academy
+    </div>
+    <br>
+    <br>
+    <br>
+    
+    <img src="" alt="Avatar" class="avatar" id="cardAvatar">
+    <div class="student-info">
+      <h2 id="cardName">Name</h2>
+      <p id="cardEmail">Email</p>
+    </div>
+    <div class="details">
+      <p><strong>Hall Ticket No:</strong> <span id="cardHallTicket"></span></p>
+      <p><strong>College:</strong> <span id="cardCollege"></span></p>
+      <p><strong>Year:</strong> <span id="cardCollege"></span></p>
+      <p><strong>Branch:</strong> <span id="cardSemester"></span></p>
+  
+    </div>
+    <div class="signature">
+      <img src="images/signature-removebg-preview.png" alt="Founder Signature">
+      <p>Founder & CEO</p>
+    </div>
+    <button id="downloadBtn" onclick="downloadIDCard()">Download ID</button>
+    <button id="editBtn" onclick="editProfile()">Edit ID</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+window.onload = function(){
+  const saved = JSON.parse(localStorage.getItem("studentProfile"));
+  if(saved){
+    showIDCard(saved);
+  }
+}
+
+function submitProfile(){
+  const profilePic = document.getElementById("profilePic").files[0];
+  const name = document.getElementById("name").value.trim();
+  const college = document.getElementById("college").value.trim();
+  const semester = document.getElementById("semester").value.trim();
+  const hallTicket = document.getElementById("hallTicket").value.trim();
+  const email = document.getElementById("email").value.trim();
+
+  if(!name || !college || !semester || !hallTicket || !email){
+    alert("Please fill all fields!");
+    return;
+  }
+
+  const profileData = { avatar:"", name, college, semester, hallTicket, email };
+
+  if(profilePic){
+    const reader = new FileReader();
+    reader.onload = function(e){
+      profileData.avatar = e.target.result;
+      saveAndShow(profileData);
+    }
+    reader.readAsDataURL(profilePic);
+  } else {
+    saveAndShow(profileData);
+  }
+}
+
+function saveAndShow(data){
+  localStorage.setItem("studentProfile", JSON.stringify(data));
+  showIDCard(data);
+}
+
+function showIDCard(data){
+  document.getElementById("profileForm").style.display = "none";
+  const idCard = document.getElementById("idCard");
+  idCard.style.display = "block";
+  document.getElementById("cardAvatar").src = data.avatar || "https://via.placeholder.com/100?text=No+Photo";
+  document.getElementById("cardName").innerText = data.name;
+  document.getElementById("cardEmail").innerText = data.email;
+  document.getElementById("cardCollege").innerText = data.college;
+  document.getElementById("cardSemester").innerText = data.semester;
+  document.getElementById("cardHallTicket").innerText = data.hallTicket;
+}
+
+function downloadIDCard(){
+  const idCard = document.getElementById("idCard");
+  html2canvas(idCard, { scale: 2 }).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "student_id_card.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+}
+
+function editProfile(){
+  const saved = JSON.parse(localStorage.getItem("studentProfile"));
+  if(saved){
+    document.getElementById("profileForm").style.display = "block";
+    document.getElementById("idCard").style.display = "none";
+
+    document.getElementById("name").value = saved.name;
+    document.getElementById("college").value = saved.college;
+    document.getElementById("semester").value = saved.semester;
+    document.getElementById("hallTicket").value = saved.hallTicket;
+    document.getElementById("email").value = saved.email;
+  }
+}
+</script>
+</body>
+</html>
